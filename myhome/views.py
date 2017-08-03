@@ -5,13 +5,15 @@ from django.http import HttpResponse
 from .player import Player
 from django.http import JsonResponse
 
+
 def index(request):
     words = request.GET.get('words')
+    Player().play(words)
+
     if words:
-        Player().play(words)
-        return JsonResponse({'status':bool(1)})
+        return JsonResponse({'status': bool(1)})
     else:
-        return JsonResponse({'status':bool(0)})
+        return JsonResponse({'status': bool(0)})
 
 
 def pause(request):
