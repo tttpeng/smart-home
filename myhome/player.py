@@ -31,4 +31,5 @@ class Player(metaclass=Singleton):
     def switch_play_status(self):
         data = open('AppleScript/switchPlayStatus.applescript')
         text = data.read()
+        print('switch')
         self.asrun(text.encode(encoding='UTF-8')).decode(encoding='UTF-8')

@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^api/play', views.play),
     url(r'^api/pause', views.pause),
     url(r'^api/check', views.check),
+    url(r'api/resource', views.resource)
 ]
