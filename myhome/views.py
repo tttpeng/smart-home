@@ -7,12 +7,6 @@ from bs4 import BeautifulSoup
 from myhome.models import Question
 import json
 
-from kombu.serialization import (
-    dumps,
-    loads,
-    prepare_accept_content,
-    registry as serializer_registry, )
-
 
 def play(request):
     print(request)
@@ -80,14 +74,5 @@ def check_apple_watch(request):
 
 def test(request):
     res = celery_test.delay()
-    print(type(res))
-
-    ss = {'a': True, 'b': '搜索', 'c': None}
-    print(json.dumps(
-        ss,
-        ensure_ascii=False, ))
-    print(dumps(
-        ss,
-        serializer='json', ))
     print("result======>" + res.get())
     return HttpResponse("ok")
