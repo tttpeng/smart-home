@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^api/pause', views.pause),
     url(r'^api/check', views.check),
     url(r'api/resource', views.resource),
-    url(r'checkAppleWatch', views.check_apple_watch)
+    url(r'checkAppleWatch', views.check_apple_watch),
+    url(r'test', views.test)
 ]

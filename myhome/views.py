@@ -1,9 +1,17 @@
 from django.http import HttpResponse
 from .player import Player
 from django.views.decorators.csrf import csrf_protect
-from myhome.tasks import check
+from myhome.tasks import celery_test
 import requests
 from bs4 import BeautifulSoup
+from myhome.models import Question
+import json
+
+from kombu.serialization import (
+    dumps,
+    loads,
+    prepare_accept_content,
+    registry as serializer_registry, )
 
 
 def play(request):
@@ -67,4 +75,19 @@ def check_apple_watch(request):
             headers=headers)
         print(r2.text)
 
+    return HttpResponse("ok")
+
+
+def test(request):
+    res = celery_test.delay()
+    print(type(res))
+
+    ss = {'a': True, 'b': '搜索', 'c': None}
+    print(json.dumps(
+        ss,
+        ensure_ascii=False, ))
+    print(dumps(
+        ss,
+        serializer='json', ))
+    print("result======>" + res.get())
     return HttpResponse("ok")

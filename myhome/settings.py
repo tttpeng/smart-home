@@ -14,6 +14,10 @@ import os
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['celery_chinese_json', 'application/text']
+CELERY_TASK_SERIALIZER = 'celery_chinese_json'
+CELERY_RESULT_SERIALIZER = 'celery_chinese_json'
+
 # CELERY_RESULT_BACKEND = 'django-cache'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_celery_results',
     'django_celery_beat',
+    'myhome',
 ]
 
 MIDDLEWARE = [
